@@ -13,6 +13,7 @@ export default function ProductList() {
     },[])
 
     const fetchProducts = async() => {
+        // Api fetch
         await axios.get('https://ammar4web.enjaz-monitoring.com/api/product').then(({data}) => {
             setProducts(data)
         })
