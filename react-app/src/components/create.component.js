@@ -7,20 +7,20 @@ export default function CreateProduct() {
     const navigate = useNavigate();
     const [title,setTitle] = useState('')
     const [description,setDescription] = useState('')
-    const [image,setImage] = useState('')
+    // const [image,setImage] = useState('')
 
-    const changeHandler = (e) => {
-        setImage(e.target.files[0])
-    }
+    // const changeHandler = (e) => {
+    //     setImage(e.target.files[0])
+    // }
 
     const createProduct = async(e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('title',title)
         formData.append('description',description)
-        formData.append('image',image)
+        // formData.append('image',image)
 
-        await axios.post('http://127.0.0.1:8000/api/product',formData).then((data) => {
+        await axios.post('http://ammar4web6.enjaz-monitoring.com/api/product',formData).then((data) => {
             console.log(data.message);
             navigate('/')
         }).catch(({response}) => {
@@ -41,22 +41,22 @@ export default function CreateProduct() {
                         <hr></hr>
                         <div className='form-wrapper'>
                             <form onSubmit={createProduct}>
-                                <div className="mb-3">
+                                {/* <div className="mb-3">
                                     <label  className="form-label">Title</label>
                                     <input type="text" className="form-control" 
                                         onChange = {changeHandler}
+                                    />
+                                </div> */}
+                                <div className="mb-3">
+                                    <label  className="form-label">Title</label>
+                                    <input type="text" className="form-control" 
+                                        value={title} onChange = {(e) => {setTitle(e.target.value)}}
                                     />
                                 </div>
                                 <div className="mb-3">
                                     <label className="form-label">Example textarea</label>
                                     <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={description} onChange = {(e) => {setDescription(e.target.value)}}>
                                     </textarea>
-                                </div>
-                                <div className="mb-3">
-                                    <label  className="form-label">Title</label>
-                                    <input type="file" className="form-control" 
-                                        value={title} onChange = {(e) => {setTitle(e.target.value)}}
-                                    />
                                 </div>
                                 <div className="col-auto">
                                     <button type="submit" className="btn btn-primary mb-3">Save</button>
