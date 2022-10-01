@@ -13,7 +13,7 @@ export default function ProductList() {
     },[])
 
     const fetchProducts = async() => {
-        await axios.get('https://ammar4web.enjaz-monitoring.com/api/product').then(({data}) => {
+        await axios.get('http://ammar4web6.enjaz-monitoring.com/api/product').then(({data}) => {
             setProducts(data)
         })
     }
@@ -54,7 +54,7 @@ export default function ProductList() {
                     <img src={`http://127.0.0.1:8000/storge/product/image/${row.image}`} width='100px' alt=''/>
                     </td>
                     <td>
-                    <Link className='btn-success mb-2 float-end' to={`/product/edit/${row.id}`}>Edit</Link>
+                    <Link className='btn btn-success mb-2 float-end' to={`/product/edit/${row.id}`}>Edit</Link>
                     </td>
                     <td><button  className="btn btn-danger" onClick={() => deleteProduct(row.id)}>Delete</button></td>
                 </tr>
